@@ -1,0 +1,22 @@
+---
+title: "TOTKA Manual"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+```{r child = 'introduction.Rmd'}
+```
+```{r child = 'workflow.Rmd'}
+```
+```{r child = 'data_input_bmd.Rmd'}
+```
+```{r child = 'data_input_deg.Rmd'}
+```
+```{r child = 'forward_dosimetry.Rmd'}
+```
+```{r child = 'integrated_analysis.Rmd'}
+```
+```{r child = 'reverse_dosimetry.Rmd'}
+```

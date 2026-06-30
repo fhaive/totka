@@ -1,0 +1,244 @@
+
+# BMDx Input
+
+## BMDx Data Import Panel
+
+![BMDx Data Import Panel](images/1_BMD_input.jpg)
+
+Within the *BMDx Input* tab, the following components are visible:
+
+### 1. BMD Stats (POD file)
+
+- Button: **Browse...** to select an Excel file  
+- Expected input: gene-level BMD results  
+- Message:  
+  - “No file selected” → no file loaded  
+  - “Waiting for Import!” → file selected but not yet confirmed  
+  - “File Ready!” → file successfully processed  
+
+---
+
+### Step-by-step upload workflow
+
+The upload of the BMD (POD) file is performed through three main stages:
+
+---
+
+#### Step 1 — File selection and preview
+
+After selecting a file using the **Browse...** button, the application displays a preview of the dataset.
+
+![Input BMD data](images/2_import_BMD_data_1.png)
+
+The preview table (**“BMD PODs Preview”**) shows the structure of the uploaded data, including:
+
+- **Experiment**: chemical or condition (e.g., PFOS)  
+- **time**: exposure time point  
+- **Feature**: gene identifier  
+- **Model**: fitted dose-response model (e.g., exp2, power, polynomial)  
+- **BMR**: benchmark response  
+- **BMDL / BMD / BMDU**: dose estimates  
+- **AC50**: half-maximal response dose  
+- **Adverse_direction**: sign of response  
+- **AIC, R2, Log_likelihood**: model quality metrics  
+- **Residual_variance / control_variance**: variability estimates  
+
+This preview step is critical to:
+- Verify that the correct file has been loaded  
+- Ensure column names are recognized  
+- Inspect the quality and structure of the data  
+
+---
+
+#### Step 2 — Column mapping
+
+After previewing the data, the user must define how the columns in the uploaded file correspond to the expected variables used by the application.
+
+The following mappings are required:
+
+- **Experiment Column** → identifies experimental conditions  
+- **Time Column** → identifies exposure duration  
+- **Feature Column** → gene identifier  
+- **BMDL Column** → lower confidence bound  
+- **BMD Column** → benchmark dose  
+- **BMDU Column** → upper confidence bound  
+- **Adverse Direction Column** → direction of response  
+
+Each field is selected through a dropdown menu populated with the column names detected in the uploaded file.
+
+This step ensures compatibility between user-provided data and the internal analysis pipeline.
+
+---
+
+#### Step 3 — Import validation
+
+![Input BMD data](images/2_import_BMD_data_2.png)
+
+Once all columns are correctly mapped:
+
+- Click the **Import** button  
+- The application validates the dataset  
+- The import status is updated:
+
+  - **“Waiting for Import!”** (red) → mapping completed but import not confirmed  
+  - **“File Ready!”** (green) → data successfully loaded  
+
+
+### 2. Key Event Enrichment
+
+- Button: **Browse...**
+- Expected input: KE enrichment annotated with AOP information
+- Message:  
+  - “No file selected” → no file loaded  
+  - “Waiting for Import!” → file selected but not yet confirmed  
+  - “File Ready!” → file successfully processed  
+
+---
+
+### Step-by-step upload workflow
+
+The upload of the BMD KE enrichment file is performed through three main stages:
+
+---
+
+#### Step 1 — File selection and preview
+
+After selecting a file using the **Browse...** button, the application displays a preview of the dataset.
+
+![Input BMD KE data](images/2_import_BMD_KE_data_1.png)
+![Input BMD KE data](images/2_import_BMD_KE_data_2.png)
+
+
+The preview table (**“BMD KE Preview”**) shows the structure of the uploaded data, including:
+
+- **TermID**: Key Event ID (e.g., Event:105)  
+- **Experiment**: chemical or condition and time information (e.g., PFOS_10)  
+- **relevantGenesInGeneSet**: Number of genes in the enriched Key Event  
+- **GeneSetSize**: Number of total genes in the gene set
+- **pval**: P-value of the Key Event enrichment
+- **Genes**: Genes (Feature IDs) in the Key Event enrichment
+- **BMDL / BMD / BMDU**: dose estimates  
+- **padj**: Adjusted P-value of the Key Event enrichment
+- **Aop**: Adverse Outcome Pathway ID (e.g., Aop:437)  
+- **Ke_type**: Key Event type (MolecularIniitatingEvent, KeyEvent)  
+- **Ke_description**: Description for Key Event
+- **a.name**: Adverse Output Pathway name
+- **key_event_name**: Key Event name
+- **level**: Key Event level
+- **organ_tissue**: Key Event associated organ/tissue
+- **time**: exposure time point  
+
+This preview step is critical to:
+- Verify that the correct file has been loaded  
+- Ensure column names are recognized  
+- Inspect the quality and structure of the data  
+
+---
+
+#### Step 2 — Column mapping
+
+After previewing the data, the user must define how the columns in the uploaded file correspond to the expected variables used by the application.
+
+The following mappings are required:
+
+- **Experiment Column** → identifies experimental conditions  
+- **Time Column** → identifies exposure duration  
+- **PFAS Column** → PFAS checmial information
+- **BMDL Column** → lower confidence bound  
+- **BMD Column** → benchmark dose  
+- **BMDU Column** → upper confidence bound  
+- **Genes Column** → gene identifier  
+- **Genes Count Column** → number of genes  
+- **Adjusted P-value Column** → adjusted p-value 
+- **Organ Tissue Column** → organ/tissue information for key event 
+- **AOP ID Column** → adverse outcome pathway identifier 
+- **Key Event ID Column** → key event identifier 
+- **Key Event Name Column** → key event name
+- **Key Event Description Column** → key event description
+- **Key Event Type Column** → key event type
+- **Key Event Level Column** → key event level
+
+Each field is selected through a dropdown menu populated with the column names detected in the uploaded file.
+
+This step ensures compatibility between user-provided data and the internal analysis pipeline.
+
+---
+
+#### Step 3 — Import validation
+
+![Input BMD KE data](images/2_import_BMD_KE_data_3.png)
+
+Once all columns are correctly mapped:
+
+- Click the **Import** button  
+- The application validates the dataset  
+- The import status is updated:
+
+  - **“Waiting for Import!”** (red) → mapping completed but import not confirmed  
+  - **“File Ready!”** (green) → data successfully loaded  
+
+
+### 3. Import Button
+
+- The **Import** button initiates data loading
+- Both files must be provided before proceeding
+- After import, the data become available for visualization and analysis
+
+
+---
+
+## Right Panel: Data Visualization
+
+![View BMD data](images/3_visualize_BMD_data_1.png)
+
+The right-hand side displays **preview and visualization of the loaded data**.
+
+At the initial stage (before import), a message indicates:
+
+- “No BMD stats data loaded!”
+
+Once data are imported, this panel enables:
+
+### Tabs
+
+![View BMD data](images/3_visualize_BMD_data_2.png)
+
+- **BMDx Stats**
+  - Table of gene-level BMD results
+  - Includes sorting, filtering, and search functionality
+
+![View BMD data](images/3_visualize_BMD_data_3.png)
+
+- **BMDx KE Enrichment**
+  - KE-level enrichment results linked to AOP annotations
+
+### Visualization Modes
+
+Within each tab, different views are available:
+
+- **Table view**
+  - Interactive, filterable tables
+
+![View BMD data](images/3_visualize_BMD_data_heatmap_1.png)
+
+- **Heatmap view**
+  - Visual representation of gene or KE responses across:
+    - Chemicals (e.g., PFOS, PFOA)
+    - Time points
+    - Experiments
+
+- **BMD KE Boxplot view**
+  - Visual representation of BMDL/BMD/BMDU distribution across:
+    - Chemicals (e.g., PFOS, PFOA)
+    - Time points
+  - Selectable:
+    - Score (e.g., BMD)
+    - Key Event type
+  - Distribution overall:
+![View BMD data](images/3_visualize_BMD_KE_data_boxplot_1.png)
+  - Distribution per key event level:
+![View BMD data](images/3_visualize_BMD_KE_data_boxplot_2.png)
+
+---
+
+

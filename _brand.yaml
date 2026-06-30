@@ -1,0 +1,12 @@
+
+meta:
+  name: fhaive
+  link: https://github.com/fhaive
+
+logo: fhaive_minimal_logo.jpeg
+
+color:
+  foreground: black
+  background: white
+  primary: orange
+  danger: pink

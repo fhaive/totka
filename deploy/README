@@ -1,0 +1,12 @@
+# Build and run instructions
+# Build docker image
+docker build --platform linux/amd64 -f Dockerfile_base --progress=plain -t totka_base .
+docker build --platform linux/amd64 -f Dockerfile --progress=plain -t totka:latest .
+
+# Load prebuilt docker image, if needed use --platform strings linux/amd64
+docker load -i TOTKA_docker_image.tar
+
+# Run docker image
+docker run -p 80:80 totka:latest /bin/bash -c "cd /TOTKA/ && R -e \" options('shiny.port'=80,shiny.host='0.0.0.0');library(TOTKA);setwd('/TOTKA/');TOTKA::run_app() \""
+# then go to 127.0.0.1:80
+
